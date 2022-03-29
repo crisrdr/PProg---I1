@@ -14,10 +14,22 @@
 #define N_CMDT 2
 #define N_CMD 5
 
+/**
+ * @brief T_CmdType
+ * 
+ * Enumeration for short (CMDS) and long commands (CMDL)
+ * 
+ */
 typedef enum enum_CmdType {
   CMDS,
   CMDL} T_CmdType;
 
+/**
+ * @brief T_Command
+ * 
+ * Enumeration of the existing commads
+ * 
+ */
 typedef enum enum_Command {
   NO_CMD = -1,
   UNKNOWN,
