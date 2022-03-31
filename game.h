@@ -14,6 +14,8 @@
 #include "command.h"
 #include "space.h"
 #include "types.h"
+#include "object.h"
+#include "player.h"
 
 /**
  * @brief Game
@@ -23,8 +25,8 @@
  */
 typedef struct _Game
 {
-  Id player_location;
-  Id object_location;
+  Player *player;
+  Object *object;
   Space *spaces[MAX_SPACES];
   T_Command last_cmd;
 } Game;
@@ -90,7 +92,7 @@ BOOL game_is_over(Game *game);
   * @brief It prints the game information
   * @author Sofía y Cristina
   *
-  * This function shows the player location, the object location and each of the spaces.
+  * This function shows the info of the player, object  and each of the spaces.
   * @param game a pointer to the game
   */
 void game_print_data(Game *game);
@@ -106,22 +108,22 @@ void game_print_data(Game *game);
 Space *game_get_space(Game *game, Id id);
 
 /**
-  * @brief It gets the location of the player
+  * @brief It gets the player of the game
   * @author Sofía y Cristina
   * 
   * @param game a pointer to the game
-  * @return id of the player location
+  * @return a pointer to the player of the game
   */
-Id game_get_player_location(Game *game);
+Player *game_get_player(Game *game);
 
 /**
- * @brief It gets the location of the object
+ * @brief It gets the object of the game
  * @author Sofía y Cristina
  *
  * @param game a pointer to the game
- * @return id of the object location
+ * @return a pointer to the object of the game
  */
-Id game_get_object_location(Game *game);
+Object *game_get_object(Game *game);
 
 /**
  * @brief It gets the last command of the game
