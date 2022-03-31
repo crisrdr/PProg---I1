@@ -92,7 +92,7 @@ BOOL game_is_over(Game *game);
   * @brief It prints the game information
   * @author Sofía y Cristina
   *
-  * This function shows the info of the player, object  and each of the spaces.
+  * This function shows the info of the player, object and each of the spaces.
   * @param game a pointer to the game
   */
 void game_print_data(Game *game);
@@ -108,22 +108,22 @@ void game_print_data(Game *game);
 Space *game_get_space(Game *game, Id id);
 
 /**
-  * @brief It gets the player of the game
+  * @brief It gets the location of the player of the game
   * @author Sofía y Cristina
   * 
   * @param game a pointer to the game
   * @return a pointer to the player of the game
   */
-Player *game_get_player(Game *game);
+Id game_get_player_location(Game *game);
 
 /**
- * @brief It gets the object of the game
+ * @brief It gets the location of the object of the game
  * @author Sofía y Cristina
  *
  * @param game a pointer to the game
  * @return a pointer to the object of the game
  */
-Object *game_get_object(Game *game);
+Id game_get_object_location(Game *game);
 
 /**
  * @brief It gets the last command of the game

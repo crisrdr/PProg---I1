@@ -19,8 +19,8 @@
    Private functions
 */
 Id game_get_space_id_at(Game *game, int position);
-STATUS game_set_player(Game *game, Player *player);
-STATUS game_set_object(Game *game, Object *object);
+STATUS game_set_player_location(Game *game, Id id);
+STATUS game_set_object_location(Game *game, Id id);
 
 void game_command_unknown(Game *game);
 void game_command_exit(Game *game);
@@ -57,8 +57,8 @@ STATUS game_create_from_file(Game *game, char *filename)
     return ERROR;
 
   /* The player and the object are located in the first space */
-  game_set_player(game, game_get_player(game));
-  game_set_object(game, game_get_object(game));
+  game_set_player_location(game, game_get_space_id_at(game, 0));
+  game_set_object_location(game, game_get_space_id_at(game, 0));
 
   return OK;
 }
@@ -130,39 +130,63 @@ Space *game_get_space(Game *game, Id id)
   return NULL;
 }
 
-STATUS game_set_player(Game *game, Player *player)
+STATUS game_set_player_location(Game *game, Id id)
 {
 
-  if (player == NULL)
+  if (id == NO_ID)
   {
     return ERROR;
   }
 
-  game->player = player;
+  player_set_location(game->player,id);
   return OK;
 }
 
-STATUS game_set_object(Game *game, Object *object)
+STATUS game_set_object_location(Game *game, Id id)
 {
+  int i;
 
-  if (object == NULL)
+  if (id == NO_ID)
   {
     return ERROR;
   }
 
-  game->object = object;
+  for (i=0; i < MAX_SPACES && game->spaces[i]!=NULL; i++){
+    if (space_get_id(game->spaces[i]) == id){
+      if (space_get_object(game->spaces[i]) != NULL){
+        space_set_object(game->spaces[i], NULL);
+        player_set_object_id(game->player,object_get_id(game->object));
+        return OK;
+      } else {
+        space_set_object(game->spaces[i], game->object);
+        player_set_object_id(game->player,NO_ID);
+        return OK;
+      }
+    }
+  }
 
-  return OK;
+  return ERROR;
 }
 
-Player *game_get_player(Game *game)
+Id game_get_player_location(Game *game)
 {
-  return game->player;
+  if (!game) return NO_ID;
+
+  return player_get_location(game->player);
 }
 
-Object *game_get_object(Game *game)
+Id game_get_object_location(Game *game)
 {
-  return game->object;
+  int i;
+  
+  if (!game) return NO_ID;
+
+  for (i=0; i < MAX_SPACES && game->spaces[i]!=NULL; i++){
+    if (space_get_object(game->spaces[i]) != NULL){
+      return space_get_id(game->spaces[i]);
+    }
+  }
+  return NO_ID;
 }
 
 STATUS game_update(Game *game, T_Command cmd)
@@ -239,7 +263,7 @@ void game_command_next(Game *game)
   Id current_id = NO_ID;
   Id space_id = NO_ID;
 
-  space_id = player_get_location(game->player);
+  space_id = game_get_player_location(game);
   if (space_id == NO_ID)
   {
     return;
@@ -253,7 +277,7 @@ void game_command_next(Game *game)
       current_id = space_get_south(game->spaces[i]);
       if (current_id != NO_ID)
       {
-        player_set_location(game->player, current_id);
+        game_set_player_location(game, current_id);
       }
       return;
     }
@@ -266,7 +290,7 @@ void game_command_back(Game *game)
   Id current_id = NO_ID;
   Id space_id = NO_ID;
 
-  space_id = player_get_location(game->player);
+  space_id = game_get_player_location(game);
 
   if (NO_ID == space_id)
   {
@@ -281,7 +305,7 @@ void game_command_back(Game *game)
       current_id = space_get_north(game->spaces[i]);
       if (current_id != NO_ID)
       {
-        player_set_location(game->player, current_id);
+        game_set_player_location(game, current_id);
       }
       return;
     }

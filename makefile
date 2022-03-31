@@ -1,7 +1,7 @@
 ########################## VARIABLES ##########################
 
 EXE = play
-OBJ = command.o game_loop.o game_reader.o game.o graphic_engine.o space.o
+OBJ = command.o game_loop.o game_reader.o game.o graphic_engine.o space.o player.o object.o
 GCC = gcc -Wall -ansi -pedantic -c -g
 
 
@@ -15,21 +15,26 @@ $(EXE): $(OBJ)
 command.o: command.c command.h
 	$(GCC) command.c
 
-game_loop.o: game_loop.c graphic_engine.h game.h command.h space.h types.h
+game_loop.o: game_loop.c graphic_engine.h game.h command.h space.h types.h object.h player.h
 	$(GCC) game_loop.c
 
-game_reader.o: game_reader.c game_reader.h types.h space.h game.h command.h
+game_reader.o: game_reader.c game_reader.h types.h space.h game.h command.h object.h player.h
 	$(GCC) game_reader.c
 
-game.o: game.c game.h command.h space.h types.h game_reader.h
+game.o: game.c game.h command.h space.h types.h game_reader.h object.h player.h
 	$(GCC) game.c
 
-graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h space.h types.h libscreen.h
+graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h space.h types.h libscreen.h object.h player.h
 	$(GCC) graphic_engine.c
 
-space.o: space.c space.h types.h
+space.o: space.c space.h types.h object.h
 	$(GCC) space.c
 
+player.o: player.c player.h types.h 
+	$(GCC) player.c
+
+object.o: object.c object.h types.h 
+	$(GCC) object.c
 
 clean: 
 	rm $(EXE) *.o 

@@ -65,7 +65,7 @@ STATUS player_set_id(Player *player, Id id);
   * @param player a pointer to the player  
   * @return the name of the player
   */
-char player_get_name(Player *player);
+const char *player_get_name(Player *player);
 
 /**
   * @brief It sets the name of the player
@@ -103,7 +103,7 @@ STATUS player_set_location(Player* player, Id location);
   * @param player a pointer to the player  
   * @return the id of the object of the player
   */
-Id player_get_object(Player* player);
+Id player_get_object_id(Player* player);
 
 /**
   * @brief It sets the object of the player
@@ -113,7 +113,7 @@ Id player_get_object(Player* player);
   * @param id the new object id of the player
   * @return OK, if everything goes well or ERROR if there was some mistake 
   */
-STATUS player_set_object(Player* player, Id id);
+STATUS player_set_object_id(Player* player, Id id);
 
 /**
   * @brief It prints the player information

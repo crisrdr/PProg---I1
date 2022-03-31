@@ -12,6 +12,7 @@
 #define SPACE_H
 
 #include "types.h"
+#include "object.h"
 
 typedef struct _Space Space;
 
@@ -137,29 +138,29 @@ STATUS space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 /**
-  * @brief It sets whether the space has an object or not
+  * @brief It sets an object on the space
   * @author Profesores PPROG
   *
   * @param space a pointer to the space
-  * @param value a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
+  * @param object a pointer to the object to be set
   * @return OK, if everything goes well or ERROR if there was some mistake 
   */
-STATUS space_set_object(Space* space, BOOL value);
+STATUS space_set_object(Space* space, Object *object);
 
 /**
-  * @brief It gets whether the space has an object or not
+  * @brief It gets the id of the object of a space
   * @author Profesores PPROG
   *
   * @param space a pointer to the space
-  * @return a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
+  * @return a pointer to the object of the space
   */
-BOOL space_get_object(Space* space);
+Object *space_get_object(Space* space);
 
 /**
   * @brief It prints the space information
   * @author Profesores PPROG
   *
-  * This fucntion shows the id and name of the space, the spaces that surrounds it and wheter it has an object or not.
+  * This fucntion shows the id and name of the space, the spaces that surrounds it and its object.
   * @param space a pointer to the space
   * @return OK, if everything goes well or ERROR if there was some mistake
   */

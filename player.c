@@ -74,7 +74,7 @@ STATUS player_set_id(Player *player, Id id)
     return OK;
 }
 
-char player_get_name(Player *player)
+const char *player_get_name(Player *player)
 {
      if (!player) {
     return NULL;
@@ -113,7 +113,7 @@ STATUS player_set_location(Player *player, Id location)
 
 Id player_get_object_id(Player *player)
 {
-    if (!player) return NULL;
+    if (!player) return NO_ID;
 
     return player->object;
 }
