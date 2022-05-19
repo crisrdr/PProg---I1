@@ -42,7 +42,7 @@ STATUS object_destroy(Object* object){
 }
 
 Id object_get_id(Object* object){
-    if (!object) return NULL;
+    if (!object) return NO_ID;
 
     return object->id;
 }
