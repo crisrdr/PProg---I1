@@ -14,13 +14,25 @@
 
 #define CMD_LENGHT 30
 
+/**
+ * @brief cmd_to_str
+ * 
+ * puntero de tipo char y dos dimensiones, interpreta el
+ * char que se recibe con el nombre de un comando
+ * 
+ */
 char *cmd_to_str[N_CMD]
 [N_CMDT] = {{"", "No command"},
 			{"", "Unknown"},
 			{"e", "Exit"},
 			{"n", "Next"},
-			{"b", "Back"}};
+			{"b", "Back"},
+      {"t", "Take"},
+      {"d", "Drop"}};
 
+/** command_get_user_input devuelve un comando de tipo T_Command
+ *  de acuerdo con la entrada proporcionada por el usuario 
+ */
 T_Command command_get_user_input()
 {
   T_Command cmd = NO_CMD;

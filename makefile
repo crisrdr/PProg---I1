@@ -1,7 +1,7 @@
 ########################## VARIABLES ##########################
 
 EXE = play
-OBJ = command.o game_loop.o game_reader.o game.o graphic_engine.o space.o player.o object.o
+OBJ = command.o game_loop.o game_reader.o game.o graphic_engine.o object.o player.o space.o
 GCC = gcc -Wall -ansi -pedantic -c -g
 
 
@@ -18,7 +18,7 @@ command.o: command.c command.h
 game_loop.o: game_loop.c graphic_engine.h game.h command.h space.h types.h object.h player.h
 	$(GCC) game_loop.c
 
-game_reader.o: game_reader.c game_reader.h types.h space.h game.h command.h object.h player.h
+game_reader.o: game_reader.c game_reader.h types.h game.h command.h object.h player.h
 	$(GCC) game_reader.c
 
 game.o: game.c game.h command.h space.h types.h game_reader.h object.h player.h
@@ -27,14 +27,14 @@ game.o: game.c game.h command.h space.h types.h game_reader.h object.h player.h
 graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h space.h types.h libscreen.h object.h player.h
 	$(GCC) graphic_engine.c
 
-space.o: space.c space.h types.h object.h
-	$(GCC) space.c
+object.o: object.c object.h types.h 
+	$(GCC) object.c
 
 player.o: player.c player.h types.h 
 	$(GCC) player.c
 
-object.o: object.c object.h types.h 
-	$(GCC) object.c
+space.o: space.c space.h types.h object.h
+	$(GCC) space.c
 
 clean: 
 	rm $(EXE) *.o 

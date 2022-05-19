@@ -72,6 +72,9 @@ STATUS game_destroy(Game *game)
     space_destroy(game->spaces[i]);
   }
 
+  player_destroy(game->player);
+  object_destroy(game->object);
+
   return OK;
 }
 
@@ -168,6 +171,13 @@ STATUS game_set_object_location(Game *game, Id id)
   return ERROR;
 }
 
+/*
+Respecto a la función game_set_object_location:
+- Podría simplificarse usando game_get_space.
+- No debería asignar/desasignar objetos al jugador (fallo repetido en otra pareja).
+- No funciona correctamente por el tipo de dato utilizado en los espacios.
+*/
+
 Id game_get_player_location(Game *game)
 {
   if (!game) return NO_ID;
@@ -191,6 +201,8 @@ Id game_get_object_location(Game *game)
 
 STATUS game_update(Game *game, T_Command cmd)
 {
+  if (!game) return ERROR;
+
   game->last_cmd = cmd;
   
   switch (cmd)
@@ -235,9 +247,8 @@ void game_print_data(Game *game)
     space_print(game->spaces[i]);
   }
 
-  object_print(game->object);
-  player_print(game->player);
-
+  printf("=> Object location: %ld\n", game_get_object_location(game));
+  printf("=> Player location: %ld\n", game_get_player_location(game));
 }
 
 BOOL game_is_over(Game *game)
@@ -248,14 +259,9 @@ BOOL game_is_over(Game *game)
 /**
    Calls implementation for each action 
 */
-void game_command_unknown(Game *game)
-{
-}
+void game_command_unknown(Game *game) {}
 
-void game_command_exit(Game *game)
-{
-  
-}
+void game_command_exit(Game *game) {}
 
 void game_command_next(Game *game)
 {
@@ -311,3 +317,7 @@ void game_command_back(Game *game)
     }
   }
 }
+
+void game_command_take(Game *game){}
+
+void game_command_drop(Game* game){}

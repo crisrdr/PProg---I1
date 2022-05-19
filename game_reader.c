@@ -1,8 +1,20 @@
+/**
+ * @brief Carga los datos del juego
+ * 
+ * @file game_reader.c
+ * @author Sofía G
+ * @date 24-03-2022
+ *  
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "game_reader.h"
 #include "space.h"
+
+/** Carga los datos de un fichero donde se encuentra el juego almacenado
+ */
 
 STATUS game_reader_load_spaces(Game *game, char *filename)
 {
@@ -14,17 +26,14 @@ STATUS game_reader_load_spaces(Game *game, char *filename)
   Space *space = NULL;
   STATUS status = OK;
 
-  if (!filename)
-  {
-    return ERROR;
-  }
+  /* Control de errores */
+  if (!filename) return ERROR;
 
+  /* Apertura del fichero */
   file = fopen(filename, "r");
-  if (file == NULL)
-  {
-    return ERROR;
-  }
+  if (file == NULL) return ERROR;
 
+  /* Lectura del fichero */
   while (fgets(line, WORD_SIZE, file))
   {
     if (strncmp("#s:", line, 3) == 0)
@@ -57,11 +66,9 @@ STATUS game_reader_load_spaces(Game *game, char *filename)
     }
   }
 
-  if (ferror(file))
-  {
-    status = ERROR;
-  }
+  if (ferror(file)) status = ERROR;
 
+  /* Cierre del fichero */
   fclose(file);
 
   return status;

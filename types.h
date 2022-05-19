@@ -14,20 +14,24 @@
 #define WORD_SIZE 1000
 #define NO_ID -1
 
+/* Tipo Id */
 typedef long Id;
 
+/* Enumeracion del tipo booleano */
 typedef enum
 {
   FALSE,
   TRUE
 } BOOL;
 
+/* Enumeración del tipo estado */
 typedef enum
 {
   ERROR,
   OK
 } STATUS;
 
+/* Enumeración del tipo dirección */
 typedef enum
 {
   N,
