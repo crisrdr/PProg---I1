@@ -201,31 +201,21 @@ Space *game_get_player_space(Game *game, Player *player)
 }
 Id game_get_player_location(Game *game)
 {
-  int i = 0;
-  if (!game)
-  {
-    return NO_ID;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    if (space_get_object(game->spaces[i]) != FALSE)
-    {
-      return space_get_id(game->spaces[i]);
-    }
-  }
-  return NO_ID;
+  
+ return player_get_location(game->player);
 }
 
 Id game_get_object_location(Game *game)
 {
   int i;
+  Id obj_spc = NO_ID;
   
   if (!game) return NO_ID;
 
   for (i=0; i < MAX_SPACES && game->spaces[i]!=NULL; i++){
     if (space_get_object(game->spaces[i]) != FALSE){
-      return space_get_id(game->spaces[i]);
+      obj_spc= space_get_id(game->spaces[i]);
+      return obj_spc;
     }
   }
   return NO_ID;
@@ -287,8 +277,8 @@ void game_print_data(Game *game)
     space_print(game->spaces[i]);
   }
 
-  printf("=> Object location: %ld\n", game_get_object_location(game));
-  printf("=> Player location: %ld\n", game_get_player_location(game));
+  printf("=> Object location: %d\n", (int)game_get_object_location(game));
+  printf("=> Player location: %d\n", (int)game_get_player_location(game));
 }
 
 BOOL game_is_over(Game *game)

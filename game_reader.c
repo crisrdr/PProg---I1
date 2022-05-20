@@ -12,6 +12,7 @@
 #include <string.h>
 #include "game_reader.h"
 #include "space.h"
+#include "game.h"
 
 /** Carga los datos de un fichero donde se encuentra el juego almacenado
  */
