@@ -24,7 +24,7 @@ STATUS game_set_object_location(Game *game, Id id);
 
 void game_command_unknown(Game *game);
 void game_command_exit(Game *game);
-void game_command_next(Game *game);
+void game_command_next(Game *game); 
 void game_command_back(Game *game);
 
 /**
