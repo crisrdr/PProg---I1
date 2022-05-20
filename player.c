@@ -23,7 +23,7 @@ struct _Player
     Id id;                      /*!< Número de identificacion del jugador, debe ser único*/
     char name[WORD_SIZE + 1];   /*!< Nombre del jugador */
     Id location;                /*!< Id de la ubicación del jugador*/
-    Id object;                  /*!< Id del objeto del jugador */
+    Id object_id;                  /*!< Id del objeto del jugador */
 };
 
 /** player_create reserva memoria para un nuevo jugador e inicializa sus miembros
@@ -46,7 +46,7 @@ Player *player_create(Id id)
     newPlayer->id = id;
     newPlayer->name[0] = '\0';
     newPlayer->location = NO_ID;
-    newPlayer->object = NO_ID;
+    newPlayer->object_id = NO_ID;
 
     return newPlayer;
 }
@@ -124,11 +124,11 @@ Id player_get_location(Player *player) {
 
 /** Asigna el id de la ubicación a un jugador
   */
-STATUS player_set_location(Player *player, Id location)
+STATUS player_set_location(Player *player, Id id)
 {
-    if (!player || !location) return ERROR;
+    if (!player || !id) return ERROR;
 
-    player->location = location;
+    player->location = id;
 
     return OK;
 }
@@ -139,7 +139,7 @@ Id player_get_object_id(Player *player)
 {
     if (!player) return NO_ID;
 
-    return player->object;
+    return player->object_id;
 }
 
 /** Asigna el id del objeto a un jugador
@@ -148,7 +148,7 @@ STATUS player_set_object_id(Player *player, Id id)
 {
     if (!player || !id) return ERROR;
 
-    player->id = id;
+    player->object_id = id;
 
     return OK;
 }
@@ -162,6 +162,6 @@ STATUS player_print(Player *player)
     return ERROR;
   }
 
-  fprintf(stdout, "--> Player (Id: %ld; Name: %s; Location: %ld; Object id: %ld)\n", player->id, player->name, player->location, player->object);
+  fprintf(stdout, "--> Player (Id: %ld; Name: %s; Location: %ld; Object id: %ld)\n", player->id, player->name, player->location, player->object_id);
   return OK;
 }

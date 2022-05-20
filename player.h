@@ -91,10 +91,10 @@ Id player_get_location(Player *player);
   * @author Profesores PPROG
   *
   * @param player a pointer to the player
-  * @param location the new location of the player
+  * @param id of new location of the player
   * @return OK, if everything goes well or ERROR if there was some mistake 
   */
-STATUS player_set_location(Player* player, Id location);
+STATUS player_set_location(Player* player, Id id);
 
 /**
   * @brief It gets the object of a player
