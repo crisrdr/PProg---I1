@@ -142,10 +142,10 @@ Id space_get_west(Space* space);
   * @author Profesores PPROG
   *
   * @param space a pointer to the space
-  * @param object a pointer to the object to be set
+  * @param bool si hay objeto TRUE sino FALSE
   * @return OK, if everything goes well or ERROR if there was some mistake 
   */
-STATUS space_set_object(Space* space, Object *object);
+STATUS space_set_object(Space* space, BOOL bool);
 
 /**
   * @brief It gets the id of the object of a space
@@ -154,7 +154,7 @@ STATUS space_set_object(Space* space, Object *object);
   * @param space a pointer to the space
   * @return a pointer to the object of the space
   */
-Object *space_get_object(Space* space);
+BOOL space_get_object(Space* space);
 
 /**
   * @brief It prints the space information

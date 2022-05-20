@@ -28,7 +28,8 @@ char *cmd_to_str[N_CMD]
 			{"n", "Next"},
 			{"b", "Back"},
       {"t", "Take"},
-      {"d", "Drop"}};
+      {"d", "Drop"}
+      };
 
 /** command_get_user_input devuelve un comando de tipo T_Command
  *  de acuerdo con la entrada proporcionada por el usuario 
