@@ -1,11 +1,11 @@
-/** 
+/**
  * @brief It implements the game interface and all the associated calls
  * for each command
- * 
+ *
  * @file game.c
  * @author Profesores PPROG
- * @version 2.0 
- * @date 29-11-2021 
+ * @version 2.0
+ * @date 29-11-2021
  * @copyright GNU Public License
  */
 
@@ -25,7 +25,7 @@ Space *game_get_player_space(Game *game, Player *player);
 
 void game_command_unknown(Game *game);
 void game_command_exit(Game *game);
-void game_command_next(Game *game); 
+void game_command_next(Game *game);
 void game_command_back(Game *game);
 void game_command_take(Game *game);
 void game_command_drop(Game *game);
@@ -36,14 +36,18 @@ void game_command_drop(Game *game);
 STATUS game_create(Game *game)
 {
   int i;
+  if (!game)
+  {
+    return ERROR;
+  }
 
   for (i = 0; i < MAX_SPACES; i++)
   {
     game->spaces[i] = NULL;
   }
 
-  game->player = NULL;
-  game->object = NULL;
+  game->player = player_create(1);
+  game->object = object_create(1);
   game->last_cmd = NO_CMD;
 
   return OK;
@@ -51,6 +55,10 @@ STATUS game_create(Game *game)
 
 STATUS game_create_from_file(Game *game, char *filename)
 {
+  if (!filename || !game)
+  {
+    return ERROR;
+  }
 
   if (game_create(game) == ERROR)
     return ERROR;
@@ -68,6 +76,10 @@ STATUS game_create_from_file(Game *game, char *filename)
 STATUS game_destroy(Game *game)
 {
   int i = 0;
+  if (!game)
+  {
+    return ERROR;
+  }
 
   for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
   {
@@ -84,7 +96,7 @@ STATUS game_add_space(Game *game, Space *space)
 {
   int i = 0;
 
-  if (space == NULL)
+  if (space == NULL || !game)
   {
     return ERROR;
   }
@@ -119,7 +131,7 @@ Space *game_get_space(Game *game, Id id)
 {
   int i = 0;
 
-  if (id == NO_ID)
+  if (id == NO_ID || !game)
   {
     return NULL;
   }
@@ -138,16 +150,11 @@ Space *game_get_space(Game *game, Id id)
 STATUS game_set_player_location(Game *game, Id id)
 {
 
-  if (id == NO_ID)
+  if (id == NO_ID || !game)
   {
     return ERROR;
   }
-  if (!game)
-  {
-    return ERROR;
-  }
-
-  player_set_location(game->player,id);
+  player_set_location(game->player, id);
   return OK;
 }
 
@@ -169,8 +176,7 @@ STATUS game_set_object_location(Game *game, Id id)
   }
 
   return OK;
-  }
-
+}
 
 /*
 Respecto a la función game_set_object_location:
@@ -194,27 +200,33 @@ Space *game_get_player_space(Game *game, Player *player)
   {
     if (player_locat == space_get_id(game->spaces[i]))
     {
-       player_spc= game->spaces[i];
+      player_spc = game->spaces[i];
     }
   }
   return player_spc;
 }
 Id game_get_player_location(Game *game)
 {
-  
- return player_get_location(game->player);
+  if (!game)
+  {
+    return NO_ID;
+  }
+  return player_get_location(game->player);
 }
 
 Id game_get_object_location(Game *game)
 {
-  int i;
+  int i = 0;
   Id obj_spc = NO_ID;
-  
-  if (!game) return NO_ID;
 
-  for (i=0; i < MAX_SPACES && game->spaces[i]!=NULL; i++){
-    if (space_get_object(game->spaces[i]) != FALSE){
-      obj_spc= space_get_id(game->spaces[i]);
+  if (!game)
+    return NO_ID;
+
+  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+  {
+    if (space_get_object(game->spaces[i]) != FALSE)
+    {
+      obj_spc = space_get_id(game->spaces[i]);
       return obj_spc;
     }
   }
@@ -223,38 +235,39 @@ Id game_get_object_location(Game *game)
 
 STATUS game_update(Game *game, T_Command cmd)
 {
-  if (!game) return ERROR;
+  if (!game)
+    return ERROR;
 
   game->last_cmd = cmd;
-  
+
   switch (cmd)
   {
-    case UNKNOWN:
-      game_command_unknown(game);
-      break;
+  case UNKNOWN:
+    game_command_unknown(game);
+    break;
 
-    case EXIT:
-      game_command_exit(game);
-      break;
+  case EXIT:
+    game_command_exit(game);
+    break;
 
-    case NEXT:
-      game_command_next(game);
-      break;
+  case NEXT:
+    game_command_next(game);
+    break;
 
-    case BACK:
-      game_command_back(game);
-      break;
+  case BACK:
+    game_command_back(game);
+    break;
 
-    case TAKE:
+  case TAKE:
     game_command_take(game);
     break;
 
-    case DROP:
+  case DROP:
     game_command_drop(game);
     break;
 
-    default:
-      break;
+  default:
+    break;
   }
 
   return OK;
@@ -287,7 +300,7 @@ BOOL game_is_over(Game *game)
 }
 
 /**
-   Calls implementation for each action 
+   Calls implementation for each action
 */
 void game_command_unknown(Game *game) {}
 
@@ -348,7 +361,8 @@ void game_command_back(Game *game)
   }
 }
 
-void game_command_take(Game *game){
+void game_command_take(Game *game)
+{
   Space *player_space;
 
   /*Control errores*/
@@ -371,7 +385,8 @@ void game_command_take(Game *game){
   return;
 }
 
-void game_command_drop(Game* game){
+void game_command_drop(Game *game)
+{
   Space *player_space;
 
   /*Control errores*/

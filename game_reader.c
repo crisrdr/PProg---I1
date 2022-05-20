@@ -1,10 +1,10 @@
 /**
  * @brief Carga los datos del juego
- * 
+ *
  * @file game_reader.c
  * @author Sofía G
  * @date 24-03-2022
- *  
+ *
  */
 
 #include <stdio.h>
@@ -28,11 +28,15 @@ STATUS game_reader_load_spaces(Game *game, char *filename)
   STATUS status = OK;
 
   /* Control de errores */
-  if (!filename) return ERROR;
+  if (!filename)
+    return ERROR;
 
   /* Apertura del fichero */
   file = fopen(filename, "r");
-  if (file == NULL) return ERROR;
+  if (file == NULL){
+    return ERROR;
+  }
+    
 
   /* Lectura del fichero */
   while (fgets(line, WORD_SIZE, file))
@@ -67,7 +71,8 @@ STATUS game_reader_load_spaces(Game *game, char *filename)
     }
   }
 
-  if (ferror(file)) status = ERROR;
+  if (ferror(file))
+    status = ERROR;
 
   /* Cierre del fichero */
   fclose(file);
