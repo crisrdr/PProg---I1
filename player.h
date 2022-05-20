@@ -13,6 +13,8 @@
 
 #include "types.h"
 
+#define PLAYER_ID 1
+
 /**
  * @brief Player
  * 

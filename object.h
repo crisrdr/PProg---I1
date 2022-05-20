@@ -13,6 +13,8 @@
 
 #include "types.h"
 
+#define OBJECT_ID 2
+
 /**
  * @brief Object
  * 

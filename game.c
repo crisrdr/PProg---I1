@@ -46,8 +46,8 @@ STATUS game_create(Game *game)
     game->spaces[i] = NULL;
   }
 
-  game->player = player_create(1);
-  game->object = object_create(1);
+  game->player = player_create(PLAYER_ID);
+  game->object = object_create(OBJECT_ID);
   game->last_cmd = NO_CMD;
 
   return OK;

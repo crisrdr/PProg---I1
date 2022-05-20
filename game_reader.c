@@ -37,7 +37,6 @@ STATUS game_reader_load_spaces(Game *game, char *filename)
     return ERROR;
   }
     
-
   /* Lectura del fichero */
   while (fgets(line, WORD_SIZE, file))
   {
