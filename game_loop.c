@@ -2,7 +2,7 @@
  * @brief It defines the game loop
  *
  * @file game_loop.c
- * @author Profesores PPROG
+ * @author Cristina Rodriguez y Sofia Garcia
  * @version 2.0
  * @date 30-11-2020
  * @copyright GNU Public License

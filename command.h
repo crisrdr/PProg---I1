@@ -2,7 +2,7 @@
  * @brief It implements the command interpreter interface
  *
  * @file command.h
- * @author Profesores PPROG
+ * @author Cristina Rodriguez y Sofia Garcia
  * @version 2.0
  * @date 29-11-2021
  * @copyright GNU Public License
@@ -38,7 +38,11 @@ typedef enum enum_Command {
   BACK,
   TAKE,
   DROP} T_Command;
-
+/**
+ * @brief Interpreta la entrada del usuario para un comando especifico
+ * 
+ * @return T_Command 
+ */
 T_Command command_get_user_input();
 
 #endif
