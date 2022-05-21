@@ -18,7 +18,7 @@ command.o: command.c command.h
 game_loop.o: game_loop.c graphic_engine.h game.h command.h space.h types.h object.h player.h
 	$(GCC) game_loop.c
 
-game_reader.o: game_reader.c game_reader.h types.h game.h command.h object.h player.h
+game_reader.o: game_reader.c game_reader.h types.h game.h command.h object.h player.h space.h
 	$(GCC) game_reader.c
 
 game.o: game.c game.h command.h space.h types.h game_reader.h object.h player.h
