@@ -3,9 +3,7 @@
  *
  * @file player.c
  * @author Cristina y Sofía
- * @version 2.0
  * @date 24-03-2021
- * @copyright GNU Public License
  */
 
 #include <stdio.h>
