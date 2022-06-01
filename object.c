@@ -2,7 +2,7 @@
  * @brief It implements the object module
  * 
  * @file object.c
- * @author Cristina y Sofía
+ * @author Cristina
  * @version 2.0 
  * @date 24-03-2021 
  * @copyright GNU Public License

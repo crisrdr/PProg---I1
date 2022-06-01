@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  * 
  * @file game.h
- * @author Sofía y Cristinas
+ * @author Sofía y Cristina
  * @version 2.0 
  * @date 29-11-2021 
  * @copyright GNU Public License
@@ -72,7 +72,7 @@ STATUS game_update(Game *game, T_Command cmd);
 
 /**
   * @brief It destroys a game, freeing the allocated memory
-  * @author Sofia y Cristina
+  * @author Sofía y Cristina
   * 
   * @param game a pointer to the game that must be destroyed  
   * @return OK, if everything goes well or ERROR if there was some mistake
@@ -81,7 +81,7 @@ STATUS game_destroy(Game *game);
 
 /**
   * @brief It gets whether the game is over or not
-  * @author Sofia y Cristina
+  * @author Sofía y Cristina
   * 
   * @param game a pointer to the game 
   * @return TRUE, if the game is over or FALSE if not.

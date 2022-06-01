@@ -2,7 +2,7 @@
  * @brief It implements the command interpreter interface
  *
  * @file command.h
- * @author Cristina Rodriguez y Sofia Garcia
+ * @author Profesores PPROG
  * @version 2.0
  * @date 29-11-2021
  * @copyright GNU Public License

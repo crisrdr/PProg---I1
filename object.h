@@ -1,11 +1,9 @@
 /**
  * @brief It defines the space interface
  *
- * @file space.h
+ * @file object.h
  * @author Sofía y Cristina
- * @version 2.0
- * @date 29-11-2021
- * @copyright GNU Public License
+ * @date 24-03-2022
  */
 
 #ifndef OBJECT_H
