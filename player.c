@@ -2,7 +2,7 @@
  * @brief It implements the player module
  *
  * @file player.c
- * @author Sofía
+ * @author Sofía García Heras
  * @date 24-03-2021
  */
 

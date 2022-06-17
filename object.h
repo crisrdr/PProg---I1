@@ -1,11 +1,11 @@
 /**
- * @brief It defines the space interface
- *
- * @file object.h
- * @author Sofía y Cristina
+ * @brief It defines the object module
+ * 
+ * @file object.c
+ * @author Cristina Rodríguez de los Ríos Medina y Sofía García Heras
+ * @version 0.1
  * @date 24-03-2022
  */
-
 #ifndef OBJECT_H
 #define OBJECT_H
 

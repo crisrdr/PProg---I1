@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  * 
  * @file game.h
- * @author Sofía y Cristina
+ * @author Sofía García Heras y Cristina Rodríguez de los Ríos Medina
  * @version 2.0 
  * @date 29-11-2021 
  * @copyright GNU Public License

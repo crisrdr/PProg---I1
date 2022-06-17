@@ -1,5 +1,5 @@
 /**
- * @brief It defines the game loop
+ * @brief It implements the game loop
  *
  * @file game_loop.c
  * @author Profesores PPROG

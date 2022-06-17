@@ -1,8 +1,8 @@
 /**
- * @brief Carga los datos del juego
+ * @brief It implements the game reader module
  *
  * @file game_reader.c
- * @author Sofía G
+ * @author Sofía García Heras
  * @date 24-03-2022
  *
  */
@@ -16,7 +16,6 @@
 
 /** Carga los datos de un fichero donde se encuentra el juego almacenado
  */
-
 STATUS game_reader_load_spaces(Game *game, char *filename)
 {
   FILE *file = NULL;

@@ -1,3 +1,11 @@
+/**
+ * @brief It defines the game reader interface
+ * 
+ * @file game_reader.h
+ * @author Sofía García Heras
+ * @version 0.1
+ * @date 24-03-2022 
+ */
 #ifndef GAME_READER_H
 #define GAME_READER_H
 

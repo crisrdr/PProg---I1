@@ -1,13 +1,11 @@
-/** 
+/**
  * @brief It implements the object module
  * 
  * @file object.c
- * @author Cristina
- * @version 2.0 
- * @date 24-03-2021 
- * @copyright GNU Public License
+ * @author Cristina Rodríguez de los Ríos Medina
+ * @version 0.1
+ * @date 24-03-2022
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

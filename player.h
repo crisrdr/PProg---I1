@@ -2,7 +2,7 @@
  * @brief It defines the player interface
  *
  * @file player.h
- * @author Cristina y Sofía
+ * @author Cristina Rodríguez de los Ríos Medina y Sofía García Heras
  * @date 24-03-2022
  */
 
